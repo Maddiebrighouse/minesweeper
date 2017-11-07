@@ -5,7 +5,7 @@ var board = {
   cells: []
 
 }
-
+//This function defines the size of the board, And where the mines are placed.
 createBoard(4)
 function createBoard(size) {
   for (let i = 0; i < size; i++) {
@@ -13,7 +13,7 @@ function createBoard(size) {
       board.cells.push({
         row: i,
         col: j,
-        isMine: (Math.random() < 0.20),
+        isMine: (Math.random() < 0.20), // defines the mines
         isMarked: false,
         hidden: true,
         surroundingMines: 0
