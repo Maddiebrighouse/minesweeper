@@ -18,6 +18,7 @@ body {
 
 #message {
   font-size: 1.5rem;
+  color: pink;
 }
 
 .board {
@@ -26,7 +27,7 @@ body {
 }
 
 .board div {
-  color: green;
+  color: orange;
   font-size: 2rem;
   width: 75px;
   height: 75px;
