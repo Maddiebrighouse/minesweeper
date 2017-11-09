@@ -37,13 +37,27 @@ function startGame () {
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
+document.addEventListener("click", checkForWin)
 function checkForWin () {
+  let cell = undefined
+  for(cell in board.cells) {
+    if(board.cells[cell].isMine) {
+      if(!board.cells[cell].isMarked) {
+        return
+      }
+    }
+    if(board.cells[cell].hidden){
+      if(!board.cells[cell].isMine) {
+        return
 
-  // You can use this function call to declare a winner (once you've
-  // detected that they've won, that is!)
-  //   lib.displayMessage('You win!')
+      }
+    }
+    // You can use this function call to declare a winner (once you've
+    // detected that they've won, that is!)
+    
+    lib.displayMessage('You win!')
+  }
 }
-
 // Define this function to count the number of mines around the cell
 // (there could be as many as 8). You don't have to get the surrounding
 // cells yourself! Just use `lib.getSurroundingCells`:
