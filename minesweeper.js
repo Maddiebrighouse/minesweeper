@@ -6,10 +6,9 @@ var board = {
 
 }
 //This function defines the size of the board, And where the mines are placed.
-createBoard(4)
 function createBoard(size) {
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
+  for (let i = 0; i <= size; i++) {
+    for (let j = 0; j <= size; j++) {
       board.cells.push({
         row: i,
         col: j,
@@ -21,8 +20,12 @@ function createBoard(size) {
     }
   }
 }
+function createBoardSize(min, max) {
+  return Math.round(Math.random()*(max - min) + min);
+}
 
 function startGame () {
+  createBoard(createBoardSize(2, 5))
   //count mines surrounding
   let cell = undefined;
   for (cell in board.cells) {
@@ -41,22 +44,21 @@ document.addEventListener("click", checkForWin)
 function checkForWin () {
   let cell = undefined
   for(cell in board.cells) {
-    if(board.cells[cell].isMine) {
-      if(!board.cells[cell].isMarked) {
+    if(board.cells[cell].isMine) { // it's a mine
+      if(!board.cells[cell].isMarked) { // but it's not marked
         return
       }
     }
-    if(board.cells[cell].hidden){
-      if(!board.cells[cell].isMine) {
+    if(board.cells[cell].hidden){ // there's a hidden cell
+      if(!board.cells[cell].isMine) { // which isn't a mine
         return
 
       }
     }
     // You can use this function call to declare a winner (once you've
     // detected that they've won, that is!)
-    
-    lib.displayMessage('You win!')
-  }
+  return lib.displayMessage('You win!')
+}
 }
 // Define this function to count the number of mines around the cell
 // (there could be as many as 8). You don't have to get the surrounding
